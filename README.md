@@ -55,17 +55,14 @@ Can you use the power of functional programming to complete this task, without:
 
 Good luck!
 
-### Bugs
+### Changes
 
 1. The application leaks file descriptors and eventually stops working.
-2. If Github API is unresponsive temporarily, in-progress downloads are aborted.
-3. If some day's worth of data is missing, no statistics will ever be collected.
-
-### Features
-
-1. The application should download and aggregate data files in parallel.
-2. The application should support a timeout on file downloads so it doesn't hang forever.
-3. If the application is still downloading the files from a previous run, it should not start a new run.
+2. If some day's worth of data is missing, no statistics will ever be collected.
+3. If the application is sensitive to transient problems in the Github API.
+4. The application should download and aggregate data files in parallel.
+5. The application should support a timeout on file downloads so it doesn't hang forever.
+6. If the application is still downloading the files from a previous run, it should not start a new run.
 
 
 

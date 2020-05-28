@@ -210,6 +210,10 @@ final case class Csv(rows: Vector[Vector[String]], header: Map[String, Int]) { s
   }
 }
 object Csv {
+  /**
+    * The empty CSV file.
+    */
+  val empty: Csv = Csv(Vector(), Map())
 
   /**
    * Constructs a CSV file from a string.
