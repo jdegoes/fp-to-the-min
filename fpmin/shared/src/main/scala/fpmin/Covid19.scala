@@ -1,6 +1,9 @@
 package fpmin
 
 import fpmin.csv._
+import zio.ZIO
+import zio.blocking.Blocking
+import java.io.IOException
 
 /**
  * The Covid19 service provides access to standardized data sets.
@@ -21,18 +24,15 @@ object Covid19 {
    */
   class Live(github: Github) extends Covid19 {
     def unsafeLoad(day: Int, month: Int, region: Region = Region.Global, year: Int = 2020): Csv =
-      unsafeLoadFile(formFullPath(day, month, region, year))
+      Csv.fromString(github.unsafeDownload(Slug, formFullPath(day, month, region, year)))
+
+    def load(day: Int, month: Int, region: Region = Region.Global, year: Int = 2020): ZIO[Blocking, IOException, Csv] =
+      github.download(Slug, formFullPath(day, month, region, year)).map(Csv.fromString(_))
 
     private def formFullPath(day: Int, month: Int, region: Region, year: Int): String = {
       def pad(int: Int): String = (if (int < 10) "0" else "") + int.toString
 
-      s"csse_covid_19_daily_reports${region.suffix}/${pad(day)}-${pad(month)}-${year}.csv"
-    }
-
-    private def unsafeLoadFile(name: String): Csv = {
-      val content = github.unsafeDownload(Slug, s"csse_covid_19_data/${name}")
-
-      Csv.fromString(content)
+      s"csse_covid_19_data/csse_covid_19_daily_reports${region.suffix}/${pad(day)}-${pad(month)}-${year}.csv"
     }
   }
   private val Slug: String = "CSSEGISandData/COVID-19"
