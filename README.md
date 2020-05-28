@@ -8,6 +8,31 @@ In 2018, John A. De Goes did a live coding session for the Functional Programmin
 
 In this highly anticipated sequel to _FP to the Max_, John shows the sweet spot for functional programming in Scala: a magical place that provides most of the benefits of _FP to the Max_, but in a tiny fraction of the time and effort, with no jargon, no boilerplate, and no ceremony. This is the place that gets colleagues excited about using Scala and helps companies realize the full potential of the powerful programming language. Come discover how functional programming can help you be more productive and write better code that follows best practices, in a fraction of the time required by other approaches!
 
+### Agenda 
+
+ - Introduction
+   - FP to the Max
+     - Intro to FP
+     - Benefits in the Large
+     - Overkill?
+   - FP to the Min
+     - Skip the Intro
+     - Deeper Benefits in the Large
+     - Underkill?
+ - FP to the Min
+   - Domain Introduction
+   - Challenge Review
+     - Bug Reports
+     - Feature Requests
+   - Incremental Refactoring
+     - Functional Effects
+     - Areas
+       - Error Management
+       - Concurrency & Parallelism
+       - Resource Management
+       - Dependency Management
+   - Review
+
 ## The Source Code
 
 The example code used during the presentation can be found in the `fpmin` subdirectory.
