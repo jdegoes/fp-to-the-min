@@ -17,7 +17,7 @@ trait Covid19 {
 object Covid19 {
 
   /**
-   * A production implementation of the Covid19 service.
+   * A production implementation of the Covid19 service that depends on a Github service.
    */
   class Live(github: Github) extends Covid19 {
     def unsafeLoad(day: Int, month: Int, region: Region = Region.Global, year: Int = 2020): Csv = {
