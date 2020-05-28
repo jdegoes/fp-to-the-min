@@ -4,7 +4,6 @@ import zio.App
 import zio.console._
 
 object StatsCollector2 extends App {
-
   def run(args: List[String]) =
     myAppLogic.exitCode
 
