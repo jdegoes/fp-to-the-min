@@ -52,7 +52,7 @@ object StatsCollector2 extends App {
     val agg = aggregateAndSummarize(Month.APRIL)
 
     (for {
-      - <- agg.repeat(Schedule.spaced(1.minute)).fork
+      _ <- agg.repeat(Schedule.spaced(1.minute)).fork
       _ <- getStrLn
     } yield ()).provideCustomLayer(Github.live >>> Covid19.live)
   }

@@ -37,7 +37,7 @@ object StatsCollector1 {
   }
 
   def main(args: Array[String]): Unit = {
-    val github    = new Github()
+    val github    = new Github(zio.blocking.Blocking.Service.live)
     val scheduler = new Scheduler.Live(Executors.newScheduledThreadPool(1))
     val covid19   = new Covid19.Live(github)
 
