@@ -31,6 +31,7 @@ In this highly anticipated sequel to _FP to the Max_, John shows the sweet spot 
        - Concurrency & Parallelism
        - Resource Management
        - Dependency Management
+       - Testing
    - Review
 
 ## The Source Code
