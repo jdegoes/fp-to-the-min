@@ -29,9 +29,9 @@ object StatsCollector1 {
   }
 
   def aggregateAndSummarize(covid19: Covid19, month: Month): Unit = {
-    val result = aggregate(covid19, month).truncate(10)
+    val result = aggregate(covid19, month)
 
-    printSummary(result)
+    printSummary(result.truncate(10))
 
     println("Press [Enter] to stop downloading...")
   }
