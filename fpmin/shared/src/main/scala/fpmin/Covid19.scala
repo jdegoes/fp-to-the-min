@@ -20,13 +20,16 @@ object Covid19 {
    * A production implementation of the Covid19 service that depends on a Github service.
    */
   class Live(github: Github) extends Covid19 {
-    def unsafeLoad(day: Int, month: Int, region: Region = Region.Global, year: Int = 2020): Csv = {
+    def unsafeLoad(day: Int, month: Int, region: Region = Region.Global, year: Int = 2020): Csv =
+      unsafeLoadFile(formFullPath(day, month, region, year))
+
+    private def formFullPath(day: Int, month: Int, region: Region, year: Int): String = {
       def pad(int: Int): String = (if (int < 10) "0" else "") + int.toString
 
-      load(s"csse_covid_19_daily_reports${region.suffix}/${pad(day)}-${pad(month)}-${year}.csv")
+      s"csse_covid_19_daily_reports${region.suffix}/${pad(day)}-${pad(month)}-${year}.csv"
     }
 
-    private def load(name: String): Csv = {
+    private def unsafeLoadFile(name: String): Csv = {
       val content = github.unsafeDownload(Slug, s"csse_covid_19_data/${name}")
 
       Csv.fromString(content)
