@@ -13,7 +13,7 @@ object StatsCollector1 {
     val daysInMonth = YearMonth.of(2020, month.getValue()).lengthOfMonth()
 
     (1 to daysInMonth).map { dayInMonth =>
-      val csv = covid19.unsafeLoad(month.getValue(), dayInMonth)
+      val csv = covid19.unsafeLoad(dayInMonth, month.getValue())
 
       val retained = csv.retain("country_region", "confirmed", "deaths", "recovered", "active", "province_state")
 

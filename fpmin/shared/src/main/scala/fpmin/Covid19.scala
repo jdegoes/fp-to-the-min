@@ -26,7 +26,7 @@ object Covid19 {
     private def formFullPath(day: Int, month: Int, region: Region, year: Int): String = {
       def pad(int: Int): String = (if (int < 10) "0" else "") + int.toString
 
-      s"csse_covid_19_data/csse_covid_19_daily_reports${region.suffix}/${pad(day)}-${pad(month)}-${year}.csv"
+      s"csse_covid_19_data/csse_covid_19_daily_reports${region.suffix}/${pad(month)}-${pad(day)}-${year}.csv"
     }
   }
   private val Slug: String = "CSSEGISandData/COVID-19"
